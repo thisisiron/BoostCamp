@@ -1,4 +1,4 @@
-package com.caicorp.boostcamp.Data;
+package com.caicorp.boostcamp.Model;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,11 @@
 package com.caicorp.boostcamp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.caicorp.boostcamp.Data.MovieItem;
-import com.caicorp.boostcamp.Data.MovieList;
-import com.caicorp.boostcamp.Data.ResponseInfo;
+import com.caicorp.boostcamp.Model.MovieItem;
+import com.caicorp.boostcamp.Model.MovieList;
 import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(MovieAdapter.ViewHolder holder, View view, int position) {
                 MovieItem item = adapter.getItem(position);
-                Toast.makeText(getApplicationContext(), "Clicked Item : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                linkWebpage(item);
             }
         });
 
@@ -74,11 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void linkWebpage(MovieItem item) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
+        startActivity(browserIntent);
+    }
+
 
     public void requestMovieList() {
 
         String title = editText.getText().toString();
-        String url = "https://openapi.naver.com/v1/search/movie.json?query=";
+        String url = "https://" + AppHelper.host + "?query=";
         String encodeText = null;
         try {
             encodeText = URLEncoder.encode(title, "UTF-8");

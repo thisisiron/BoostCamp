@@ -1,4 +1,4 @@
-package com.caicorp.boostcamp.Data;
+package com.caicorp.boostcamp.Model;
 
 public class MovieItem {
 
@@ -8,14 +8,24 @@ public class MovieItem {
     String director;
     String actor;
     String image;
+    String link;
 
-    public MovieItem(String title, String rate, String pubDate, String director, String actor, String image) {
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public MovieItem(String title, String rate, String pubDate, String director, String actor, String image, String link) {
         this.title = title;
         this.userRating = userRating;
         this.pubDate = pubDate;
         this.director = director;
         this.actor = actor;
         this.image = image;
+        this.link = link;
     }
 
     public String getUrl() {
@@ -43,11 +53,11 @@ public class MovieItem {
         this.userRating = userRating;
     }
 
-    public String getYear() {
+    public String getPubDate() {
         return pubDate;
     }
 
-    public void setYear(String pubDate) {
+    public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
     }
 

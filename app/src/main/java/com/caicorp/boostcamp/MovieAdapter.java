@@ -3,8 +3,6 @@ package com.caicorp.boostcamp;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -16,12 +14,9 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.caicorp.boostcamp.Data.MovieItem;
+import com.caicorp.boostcamp.Model.MovieItem;
 
 import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -120,16 +115,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public void setItem(MovieItem item) {
 
             titleTextView.setText(Html.fromHtml(item.getTitle()));
-            yearTextView.setText(item.getYear());
+            yearTextView.setText(item.getPubDate());
             directorTextView.setText(item.getDirector());
             actorTextView.setText(item.getActor());
+
             if(!TextUtils.isEmpty(item.getRate())) {
                 float rating = Float.parseFloat(item.getRate());
                 ratingBar.setRating(rating);
             }
 
             urlStr = item.getUrl();
-
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -148,6 +143,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             });
 
             t.start();
+
             try {
                 t.join();
                 imageView.setImageBitmap(bitmap);
