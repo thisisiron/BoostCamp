@@ -121,7 +121,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
             if(!TextUtils.isEmpty(item.getRate())) {
                 float rating = Float.parseFloat(item.getRate());
-                ratingBar.setRating(rating);
+                ratingBar.setRating(rating / 2);
             }
 
             urlStr = item.getUrl();

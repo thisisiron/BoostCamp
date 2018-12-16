@@ -46,7 +46,8 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:max="10" />
+                android:max="5"
+                android:stepSize="0.1"/>
 
 
             <TextView
