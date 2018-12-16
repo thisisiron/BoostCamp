@@ -39,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = (EditText) findViewById(R.id.editText);
-        button = (Button) findViewById(R.id.button);
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        init();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -129,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
         MovieList movieList = gson.fromJson(response, MovieList.class);
         adapter.addItems(movieList.items);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void init() {
+        editText = (EditText) findViewById(R.id.editText);
+        button = (Button) findViewById(R.id.button);
+        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
     }
 
 

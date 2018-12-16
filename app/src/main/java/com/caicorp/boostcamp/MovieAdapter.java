@@ -22,6 +22,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+
     Context context;
     ArrayList<MovieItem> items = new ArrayList<MovieItem>();
     OnItemClickListener listener;
@@ -70,10 +71,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
-
-
     }
-
 
 
 
@@ -93,12 +91,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
-            yearTextView = (TextView) itemView.findViewById(R.id.yearTextView);
-            directorTextView = (TextView) itemView.findViewById(R.id.directorTextView);
-            actorTextView = (TextView) itemView.findViewById(R.id.actorTextView);
-            ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            init();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -155,6 +148,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public void setOnItemClickListener(OnItemClickListener listener){
             this.listener = listener;
+        }
+
+        public void init() {
+            titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
+            yearTextView = (TextView) itemView.findViewById(R.id.yearTextView);
+            directorTextView = (TextView) itemView.findViewById(R.id.directorTextView);
+            actorTextView = (TextView) itemView.findViewById(R.id.actorTextView);
+            ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+
         }
 
 
